@@ -41,11 +41,11 @@ const regist =(event)=>{
        
             
     <div className="container">
-        <div className="container card" style={{width:"600px"}} >
+        <div className="container card" style={{width: "40vw", backgroundColor:"white"}} >
                 {/* <br></br> */}
             <div className="container">
                 <center>
-          <a href="/Login">  <img src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?w=826&t=st=1671634910~exp=1671635510~hmac=abeeb32ff5dbf8c9524f0296da38f47c6c3329190682100c91e29558fff7f2d0" width="250px" /> </a>
+          <a href="/">  <img src="https://img.freepik.com/free-photo/shopping-cart-3d-render-icon_460848-6902.jpg?w=826&t=st=1671634910~exp=1671635510~hmac=abeeb32ff5dbf8c9524f0296da38f47c6c3329190682100c91e29558fff7f2d0" width="250px" /> </a>
             </center>
             </div>
 
@@ -55,7 +55,7 @@ const regist =(event)=>{
             <br></br>   <br></br>   
             <div className="container">
            
-            <form style={{width:"550px"}} >
+            <form style={{width:"500px"}} >
                     <div className="form-group">
                       <label>User Name</label>
                       <input type="text" onChange={updateState} name="username" className="form-control" placeholder="Enter User Name"/>       
@@ -75,11 +75,13 @@ const regist =(event)=>{
                        <input type="text"  onChange={updateState} name="email" className="form-control" placeholder="Enter Email"/>
                     </div>
 
-                    <br></br>  
+                    <br></br>    <br></br>  
 
-                     <button type="submit" onClick={regist} className="btn btn-success" style={{marginBottom:"30px", width:"550px"}}>Register</button>
+                     <button type="submit" onClick={regist} className="btn btn-success" style={{marginBottom:"30px", width:"500px"}}>Register</button>
 
                      <br></br>
+
+                    <h6 class="text-center">Already Have an Account ? <a href="/Login" style={{textDecoration:"none"}}>Login Here</a></h6> 
             </form>
 
             </div>

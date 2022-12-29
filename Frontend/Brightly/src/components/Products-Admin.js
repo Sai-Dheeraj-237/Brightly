@@ -95,7 +95,7 @@ function Proudctsadmin() {
             <ul>
 
                 <div className="container">
-                    <div className="container card" style={{ width: "600px" }} >
+                    <div className="container card" style={{ width: "675px" }} >
                         <div className="container">
                             <br></br>
                             <h2 style={{ textAlign: "center" }}>ADMIN PANEL</h2>         <br></br>

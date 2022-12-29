@@ -8,6 +8,7 @@ export default function (state=null, action){
             
         case "user-login-details":
             console.log(action.payload);
+            localStorage.setItem("token", action.payload.data.token);
             return action.payload.data.token;
         
         case "user-Logout" : 

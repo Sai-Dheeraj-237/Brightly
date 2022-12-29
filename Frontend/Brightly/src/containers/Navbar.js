@@ -50,7 +50,7 @@ const logout = () => {
                                 {props.token ? 
                                     <>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/Home">Home</Link>
+                                            <Link className="nav-link" to="/">Home</Link>
                                         </li>
 
                                         <li className="nav-item">

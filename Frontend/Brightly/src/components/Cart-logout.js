@@ -1,6 +1,7 @@
-import { useLocation } from 'react-router-dom';
-import Products from '../containers/Products';
-import './cartlogout.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+// import Products from '../containers/Products';
+import './cartlogout.css'
+
 
 
 
@@ -9,6 +10,7 @@ function Cartlogout() {
     const location = useLocation();
     console.log("location", location);
     var it = location.state;
+    const navig  = useNavigate();
 
     return (
         <>
@@ -41,9 +43,11 @@ function Cartlogout() {
                                     <p className="product-description">{it.description}</p> <br></br>
                                     <h4 className="price">current price: <span> ₹ {it.price}</span></h4> <br></br>
 
-                                    
+
                                     <div className="action">
-                                        <button className="add-to-cart btn btn-default" type="button">add to cart</button>
+                                        <button onClick={()=>navig("/Login", {state:{message:"Please Login to Continue.."}})}  className="add-to-cart btn btn-default" type="button">Add to cart</button> <span>        </span>
+                                        <button onClick={()=>navig("/")} className="add-to-cart btn btn-default" type="button">Return to Home</button>
+
                                         {/* <button className="like btn btn-default" type="button"><span className="fa fa-heart"></span></button> */}
                                     </div>
                                 </div>

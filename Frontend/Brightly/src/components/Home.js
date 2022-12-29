@@ -36,7 +36,7 @@ function Home() {
             return <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
                 <div class="card shadow">
                     <div class="card-body text-center">
-                        <h3 class="text-warning">{item.brand}</h3>
+                        <h3 class="text">{item.brand}</h3>
                         <a href="#">
                             <img class="card-img-top" style={{height:"450px",width:"450px", }}  src={item.image} alt="" /> 
                         </a> <br></br>
@@ -49,7 +49,7 @@ function Home() {
                         </div> */}
                        <h5 onClick={()=>addProducts(item)} style={{cursor:"pointer"}}>{item.name}</h5>
                         <h6>₹{item.price}</h6>
-                        <a class="btn btn-primary my-2" href="#" role="button">Add to Cart</a>
+                        <button onClick={()=>navig("/Login", {state:{message:"Please Login to Continue.."}})} class="btn btn-primary my-2" href="#" role="button">Add to Cart</button>
                     </div>
                 </div>
             </div>
