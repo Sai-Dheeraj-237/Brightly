@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import Cartlogout from "../components/Cart-logout";
 import { connect } from "react-redux";
 
@@ -9,8 +9,18 @@ import { connect } from "react-redux";
 
 
 function Dashboard(props) {
+
+    console.log("local storage", localStorage.getItem("cart"));
+    if (localStorage.getItem("cart") == null) {
+        localStorage.setItem('cart', "[]");
+    }
+
     const [products, setProducts] = useState([]);
     const navig  = useNavigate();
+
+   
+
+   
 
     useEffect(() => {
         userdisplayProducts();
@@ -32,13 +42,18 @@ function Dashboard(props) {
         navig("/Cartlogout",{state:item})
     }
 
-    const addToCart = ()=>{
-        console.log(props.token);
-        alert("Item added");
+    const addToCart = (item)=>{
+        // console.log(props.token);
+        console.log("items for the cart", item);
+     var cart = JSON.parse(localStorage.getItem("cart"));
+        cart.push(item);
+        console.log("cart", cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+     
     }
 
     const generateUserProductCards = () => {
-        console.log("products", products);
+        console.log("products to be displayed", products);
         var y = products.map(item => {
             return <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
                 <div class="card shadow">
@@ -56,7 +71,7 @@ function Dashboard(props) {
                         </div> */}
                        <h5 onClick={()=>addProducts(item)} style={{cursor:"pointer"}}>{item.name}</h5>
                         <h6>₹{item.price}</h6>
-                        <button class="btn btn-primary my-2" onClick={addToCart} href="#" role="button">Add to Cart</button>
+                        <button class="btn btn-primary my-2" onClick={() => addToCart(item)} href="#" role="button">Add to Cart</button>
                     </div>
                 </div>
             </div>

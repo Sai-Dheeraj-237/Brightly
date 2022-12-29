@@ -8,7 +8,7 @@ import Dashboard from './Dashboard';
 
 import Home from '../components/Home';
 import Products from './Products';
-import Cart from './Cart';
+import Cart from "../components/Cart";
 
 import Cartlogout from '../components/Cart-logout';
 
@@ -58,7 +58,7 @@ const logout = () => {
                                         </li>
 
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/Cart" >Cart</Link>
+                                        <Link className="nav-link" to="/Cart"> <i className="fa fa-shopping-cart" style={{ fontSize: "30px", color: "white" }}></i>  <span>Cart</span> </Link>
                                         </li>
 
                                         <li>
@@ -76,6 +76,10 @@ const logout = () => {
                                         <li className="nav-item">
                                             <Link className="nav-link" to="/Register" >Register</Link>
                                         </li>
+
+                                        {/* <li className="nav-item">
+                                        <Link className="nav-link" to="/Cart"> <i className="fa fa-shopping-cart" style={{ fontSize: "30px", color: "white" }}></i>  <span>Cart</span> </Link>
+                                        </li> */}
 
                                         
                                     </>

@@ -25,9 +25,8 @@ function Cartlogout() {
                                         <div className="tab-pane active" id="pic-1"><img style={{ height: "450px", width: "450px" }} src={it.image} /></div>
 
                                     </div>
-
-
                                 </div>
+                                
                                 <div className="details col-md-6">
                                     <h3 className="product-title">{it.name}</h3>
                                     <div className="rating">
