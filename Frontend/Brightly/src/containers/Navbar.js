@@ -20,10 +20,11 @@ import { useEffect } from 'react';
 function Navbar(props) {
    const navig =  useNavigate();
 
-console.log("logout token update", props.token);
+// console.log("logout token update", props.token);
 
 const logout = () => {
         props.getLogout();
+        
     }
 
     // useEffect(() => {

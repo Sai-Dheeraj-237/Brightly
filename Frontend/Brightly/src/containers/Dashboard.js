@@ -16,11 +16,11 @@ function Dashboard(props) {
     }
 
     const [products, setProducts] = useState([]);
-    const navig  = useNavigate();
+    const navig = useNavigate();
 
-   
 
-   
+
+
 
     useEffect(() => {
         userdisplayProducts();
@@ -37,19 +37,19 @@ function Dashboard(props) {
         )
     }
 
-    const addProducts = (item)=>{
-        console.log("items00",item);
-        navig("/Cartlogout",{state:item})
+    const addProducts = (item) => {
+        console.log("items00", item);
+        navig("/Cartlogout", { state: item })
     }
 
-    const addToCart = (item)=>{
+    const addToCart = (item) => {
         // console.log(props.token);
         console.log("items for the cart", item);
-     var cart = JSON.parse(localStorage.getItem("cart"));
+        var cart = JSON.parse(localStorage.getItem("cart"));
         cart.push(item);
         console.log("cart", cart);
         localStorage.setItem('cart', JSON.stringify(cart));
-     
+
     }
 
     const generateUserProductCards = () => {
@@ -60,7 +60,7 @@ function Dashboard(props) {
                     <div class="card-body text-center">
                         <h3 class="text">{item.brand}</h3>
                         <a href="#">
-                            <img class="card-img-top" style={{height:"450px",width:"450px", }}  src={item.image} alt="" /> 
+                            <img class="card-img-top" style={{ height: "450px", width: "450px", }} src={item.image} alt="" />
                         </a> <br></br>
                         {/* <div class="text-warning">
                             <i class="fas fa-star"></i>
@@ -69,7 +69,7 @@ function Dashboard(props) {
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i>
                         </div> */}
-                       <h5 onClick={()=>addProducts(item)} style={{cursor:"pointer"}}>{item.name}</h5>
+                        <h5 onClick={() => addProducts(item)} style={{ cursor: "pointer" }}>{item.name}</h5>
                         <h6>₹{item.price}</h6>
                         <button class="btn btn-primary my-2" onClick={() => addToCart(item)} href="#" role="button">Add to Cart</button>
                     </div>
@@ -80,29 +80,29 @@ function Dashboard(props) {
         return y;
     }
 
-   
-   
+
+
     return (
         <>
-        <div class="container mb-4">
             <div class="container mb-4">
-                <div class="row">
+                <div class="container mb-4">
+                    <div class="row">
 
-                    {generateUserProductCards()}
+                        {generateUserProductCards()}
+
+                    </div>
 
                 </div>
-
             </div>
-        </div>
         </>
     )
 }
 
 
 
-function mapLogStatetoProps(appState){
+function mapLogStatetoProps(appState) {
     console.log("appState", appState);
-    return {token:appState.accessToken};
+    return { token: appState.accessToken };
 }
 
-export default connect(mapLogStatetoProps,null)(Dashboard);
+export default connect(mapLogStatetoProps, null)(Dashboard);
