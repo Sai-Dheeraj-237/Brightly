@@ -17,9 +17,7 @@ function Dashboard(props) {
 
     const [products, setProducts] = useState([]);
     const navig = useNavigate();
-
-
-
+    const [x,setX]=useState();
 
 
     useEffect(() => {
@@ -43,24 +41,43 @@ function Dashboard(props) {
     }
 
     const addToCart = (item) => {
-        // console.log(props.token);
+        console.log(props.token);
         console.log("items for the cart", item);
         var cart = JSON.parse(localStorage.getItem("cart"));
         cart.push(item);
         console.log("cart", cart);
         localStorage.setItem('cart', JSON.stringify(cart));
 
+        setX(Math.floor((Math.random() * 100) + 1));
+
+
     }
+
+    const addedToCart = () => {
+        navig("/Cart")
+    }
+
+  
 
     const generateUserProductCards = () => {
         console.log("products to be displayed", products);
-        var y = products.map(item => {
+        let cds = JSON.parse(localStorage.getItem("cart"));
+        console.log("checking one more time", cds);
+
+            var ids = cds.map( cd => {
+                return cd._id;
+            })
+
+            console.log("ids", ids);
+
+        var y = products.map((item, i) => {
+                console.log( ids.includes(item._id));
             return <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
-                <div class="card shadow">
+                <div class="card shadow" style={{height:"95%"}}>
                     <div class="card-body text-center">
                         <h3 class="text">{item.brand}</h3>
                         <a href="#">
-                            <img class="card-img-top" style={{ height: "450px", width: "450px", }} src={item.image} alt="" />
+                            <img class="card-img-top" style={{  }} src={item.image} alt="" />
                         </a> <br></br>
                         {/* <div class="text-warning">
                             <i class="fas fa-star"></i>
@@ -71,7 +88,20 @@ function Dashboard(props) {
                         </div> */}
                         <h5 onClick={() => addProducts(item)} style={{ cursor: "pointer" }}>{item.name}</h5>
                         <h6>₹{item.price}</h6>
-                        <button class="btn btn-primary my-2" onClick={() => addToCart(item)} href="#" role="button">Add to Cart</button>
+
+                        {/* -----BUTTONS---------- */}
+                        
+                        {
+                           ids.includes(item._id)  ? (
+                                <button class="btn btn-success my-2" onClick={addedToCart} href="#" role="button">Added to Cart</button>
+
+                            ):(
+                                <button class="btn btn-primary my-2" onClick={() => addToCart(item)} href="#" role="button">Add to Cart</button>
+                            )
+                        }
+                    {/* <button class="btn btn-primary my-2" onClick={() => addToCart(item)} href="#" role="button">Add to Cart</button> */}
+
+                                    
                     </div>
                 </div>
             </div>
@@ -79,8 +109,6 @@ function Dashboard(props) {
 
         return y;
     }
-
-
 
     return (
         <>
@@ -106,3 +134,4 @@ function mapLogStatetoProps(appState) {
 }
 
 export default connect(mapLogStatetoProps, null)(Dashboard);
+

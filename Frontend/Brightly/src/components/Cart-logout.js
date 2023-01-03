@@ -6,7 +6,11 @@ import './cartlogout.css'
 
 
 
-function Cartlogout() {
+
+
+
+
+function Cartlogout(props) {
     const location = useLocation();
     console.log("location", location);
     var it = location.state;
@@ -44,7 +48,9 @@ function Cartlogout() {
 
 
                                     <div className="action">
-                                        <button onClick={()=>navig("/Login", {state:{message:"Please Login to Continue.."}})}  className="add-to-cart btn btn-default" type="button">Add to cart</button> <span>        </span>
+                                        
+                                            <button onClick={()=>navig("/Login", {state:{message:"Please Login to Continue.."}})}  className="add-to-cart btn btn-default" type="button">Add to cart</button> <span>        </span>
+                                       
                                         <button onClick={()=>navig("/")} className="add-to-cart btn btn-default" type="button">Return to Home</button>
 
                                         {/* <button className="like btn btn-default" type="button"><span className="fa fa-heart"></span></button> */}
@@ -59,4 +65,7 @@ function Cartlogout() {
     )
 }
 
+
+
 export default Cartlogout;
+// export default Cartlogout;

@@ -7,7 +7,6 @@ import ContactUs from '../components/Contactus';
 import Dashboard from './Dashboard';
 
 import Home from '../components/Home';
-import Products from './Products';
 import Cart from "../components/Cart";
 
 import Cartlogout from '../components/Cart-logout';
@@ -37,11 +36,9 @@ const logout = () => {
 
     return (
         <>
-
-
-                <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+                <nav className="navbar navbar-expand-sm bg-light navbar-light" >
                     <div className="container-fluid">
-                        <Link className="navbar-brand" to="/">BRIGTHLY</Link>
+                        {/* <Link className="navbar-brand" to="/">BRIGTHLY</Link> */}
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -50,13 +47,12 @@ const logout = () => {
 
                                 {props.token ? 
                                     <>
-                                        <li className="nav-item">
-                                            <Link className="nav-link" to="/">Home</Link>
-                                        </li>
+                                <Link className="navbar-brand" to="/Dashboard">BRIGTHLY</Link>
 
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/Products">Products</Link>
+                                            <Link className="nav-link" to="/Dashboard">Home</Link>
                                         </li>
+
 
                                         <li className="nav-item">
                                         <Link className="nav-link" to="/Cart"> <i className="fa fa-shopping-cart" style={{ fontSize: "30px", color: "white" }}></i>  <span>Cart</span> </Link>
@@ -70,6 +66,8 @@ const logout = () => {
                                     </>
                                  : 
                                     <>
+                                <Link className="navbar-brand" to="/">BRIGTHLY</Link>
+
                                         <li className="nav-item">
                                             <Link className="nav-link" to="/Login">Login</Link>
                                         </li>
@@ -106,7 +104,6 @@ const logout = () => {
                     <Route path="/Dashboard" element={<Dashboard></Dashboard>}></Route>
 
                     <Route path="/" element={<Home></Home>}></Route>
-                    <Route path="/Products" element={<Products></Products>}></Route>
                     <Route path="/Cart" element={<Cart></Cart>}></Route>
                     <Route path="/Cartlogout" element={<Cartlogout></Cartlogout>}></Route>
 

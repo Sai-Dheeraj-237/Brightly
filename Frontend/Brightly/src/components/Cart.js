@@ -21,6 +21,7 @@ function Cart(){
                     </div>
                 </a>
             </div>
+            
             <div className="px-3 my-3 text-center">
                 <div className="cart-item-label">Quantity</div>
                 <div className="count-input">
@@ -33,10 +34,9 @@ function Cart(){
                         <option>5</option>
                         <option>6</option>
                     </select>
-                </div>
-                   
-            
+                </div>       
             </div>
+
             <div className="px-3 my-3 text-center">
                 <div className="cart-item-label">Subtotal</div><span className="text-xl font-weight-medium">{itm.price}</span>
                 <br></br>  <br></br>
@@ -52,9 +52,7 @@ function Cart(){
         return cartItm;
     }
 
-    // useEffect(()=>{
-    //     getProductsInCart()
-    // })
+
    
     const removeItems =(_id)=>{
         var cartRemove = JSON.parse(localStorage.getItem("cart"));

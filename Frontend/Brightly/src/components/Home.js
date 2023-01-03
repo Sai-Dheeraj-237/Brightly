@@ -34,11 +34,11 @@ function Home() {
         console.log("products", products);
         var y = products.map(item => {
             return <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
-                <div class="card shadow">
-                    <div class="card-body text-center">
+                <div class="card shadow" style={{height:"95%"}}>
+                    <div class="card-body text-center" >
                         <h3 class="text">{item.brand}</h3>
                         <a href="#">
-                            <img class="card-img-top" style={{height:"450px",width:"450px", }}  src={item.image} alt="" /> 
+                            <img class="card-img-top"   src={item.image} alt="" /> 
                         </a> <br></br>
                         {/* <div class="text-warning">
                             <i class="fas fa-star"></i>

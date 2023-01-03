@@ -18,11 +18,11 @@ public class ProductServiceimpl implements ProductService {
 
 	@Override
 	@Transactional
-	public void add(Products products) {
+	public boolean add(Products products) {
 		// TODO Auto-generated method stub
 		System.out.println("CONTROLL NOW IN Products SERVICE:" + products);
 
-		productDAO.add(products);
+		return productDAO.add(products);
 		
 	}
 
@@ -46,6 +46,13 @@ public class ProductServiceimpl implements ProductService {
 		// TODO Auto-generated method stub
 		productDAO.update(products);
 		
+	}
+
+	@Override
+	@Transactional
+	public Products getById(int id) {
+		// TODO Auto-generated method stub
+		return productDAO.getById(id);
 	}
 
 }
