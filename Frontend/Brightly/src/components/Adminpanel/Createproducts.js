@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Proudctsadmin() {
+function Createproducts() {
 
     const [product, setProduct] = useState({
         "name": "",
@@ -56,35 +56,8 @@ function Proudctsadmin() {
 
     
 
-    const renderList = ()=>{
-        var x = products.map(prd=>{
-                return <tr key={prd._id}>
-                    {/* <td>{prd.image}</td> */}
-                    <td>{prd.name}</td>
-                    <td>{prd.price}</td>
-                    {/* <td>{prd.rating}</td> */}
-                    {/* <td>{prd.stock}</td> */}
-                    {/* <td>{prd.description}</td> */}
-                    <td><button onClick={()=>deleteProduct(prd._id)}>Delete</button></td>
-                    <td><button>Update</button></td>
-
-                    </tr>
-            })
-            return x;
-    }
-
-    const deleteProduct = (_id)=>{
-        console.log("delete proudct by id", _id);
-        axios.delete("http://localhost:8089/api/v1.0.0/product/"+ _id).then(
-            response=>{
-                console.log(response);
-                if(response.data.success==true){
-                    displayProducts();
-                }
-            }
-        )
-
-}
+ 
+    
 
 
 
@@ -167,7 +140,7 @@ function Proudctsadmin() {
 
                                 <div className="row">
                                     <div className="col">
-                                        <button type="submit" onClick={submit} className="btn btn-success" style={{ marginBottom: "30px", width: "550px" }}>SUBMIT</button>
+                                        <button type="submit" onClick={submit} className="btn btn-success" style={{ marginBottom: "30px", width: "550px" }}>Create Product</button>
                                     </div>
                                 </div>
 
@@ -178,30 +151,12 @@ function Proudctsadmin() {
                 </div>
             </ul>
 
-            <br></br>
-                            {products.length}
-                            <center>
-            <table className="table table-hover table-border table-striped" >
-            <thead>
-                {/* <th>image</th> */}
-                <th>name</th>
-                {/* <th>brand</th> */}
-                {/* <th>description</th> */}
-                <th>price</th>
-                {/* <th>stock</th> */}
-                {/* <th>rating</th> */}
-                <th colSpan="2">Operation</th>
-            </thead>
-            <tbody>
-                 {renderList()}
-            </tbody>
-            </table>
-            </center>
+            
 
 
         </>
     )
 }
 
-export default Proudctsadmin;
+export default Createproducts;
 

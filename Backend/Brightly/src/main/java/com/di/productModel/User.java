@@ -1,10 +1,20 @@
 package com.di.productModel;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,7 +23,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
+	private long userId;
 	@Column
 	private String userName;
 	@Column
@@ -21,12 +31,13 @@ public class User {
 	@Column
 	private String password;
 	@Column
-	private String user_Role;
+	private String user_Role = "customer";
 	
-	public int getUserId() {
+	
+	public long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {
@@ -54,11 +65,17 @@ public class User {
 		this.user_Role = user_Role;
 	}
 	
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", email=" + email + ", password=" + password
-				+ ", user_Role=" + user_Role + "]";
-	}
+
+	
+	
+	
+
+	
+	
+
+	
+	
+	
 	
 	
 	

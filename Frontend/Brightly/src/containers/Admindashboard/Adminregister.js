@@ -1,10 +1,10 @@
 import {  useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {getRegister} from "../actions/UserActions";
+import {getRegister} from "../../actions/UserActions";
 import { useNavigate } from 'react-router-dom';
 
-function Register(props){
+function Adminregister(props){
 
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const regist =(event)=>{
     event.preventDefault();
     console.log("regDetails", regDetails)
     props.getRegister(regDetails);
-    navigate("/Login");
+    navigate("/Admindash");
 }
 
 
@@ -105,4 +105,4 @@ function mapStateToProps (appState){
     return {token : appState.accessToken};
 }
 
-export default connect (mapStateToProps, mapDisptachtoProps)(Register);
+export default connect (mapStateToProps, mapDisptachtoProps)(Adminregister);

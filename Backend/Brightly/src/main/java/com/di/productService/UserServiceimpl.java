@@ -1,10 +1,17 @@
 package com.di.productService;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
+import com.di.BrightlyExceptions.UserNotFound;
 import com.di.productDAO.UserDAO;
 import com.di.productModel.User;
 
@@ -43,11 +50,29 @@ public class UserServiceimpl implements UserService {
 		
 	}
 
-	@Override
 	@Transactional
-	public User getById(int id) {
+	public User getById(long id) {
 		// TODO Auto-generated method stub
 		return userDAO.getById(id);
 	}
+	
+	@Override
+	@Transactional
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		userDAO.delete(id);
+	}
+
+	@Override
+	public boolean adds(User user) {
+		// TODO Auto-generated method stub
+		return userDAO.adds(user);
+	}
+
+	
+
+	
+
+	
 
 }

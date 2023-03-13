@@ -1,11 +1,11 @@
 import { useState } from "react";
-import {getLogin} from "../actions/UserActions";
+import {getLogin} from "../../actions/UserActions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
 
-function Login(props) {
+function Adminlogin(props) {
    const navig =  useNavigate();
    const location  = useLocation();
     const[loginDetails, setLoginDetails] = useState({
@@ -13,15 +13,16 @@ function Login(props) {
         password:"",
     })
 
-    if(props.token){
+    if(props.token ){
         
         console.log("Now the login props has been updated");
         console.log(props.token);
-        navig("/Dashboard");
-    
-
+        navig("/Admindash");
 
     }
+    // else{
+    //     <button onClick={()=>navig("/AdminLogin")}>Login Back</button>
+    // }
 
     const updateState = (event)=>{
             var value  = event.target.value;
@@ -33,6 +34,7 @@ function Login(props) {
         event.preventDefault();
         console.log("loginDetails", loginDetails);
         props.getLogin(loginDetails);
+        navig("/admindash");
     }
 
     return (
@@ -94,4 +96,4 @@ function mapLogStatetoProps(appState){
     return {token:appState.accessToken};
 }
 
-export default connect(mapLogStatetoProps,mapLogDisptachtoProps)(Login);
+export default connect(mapLogStatetoProps,mapLogDisptachtoProps)(Adminlogin);

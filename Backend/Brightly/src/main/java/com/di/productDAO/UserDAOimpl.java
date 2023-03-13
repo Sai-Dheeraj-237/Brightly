@@ -1,12 +1,19 @@
 package com.di.productDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
 
+import com.di.BrightlyExceptions.UserNotFound;
 import com.di.productModel.Products;
 import com.di.productModel.User;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -41,6 +48,23 @@ public class UserDAOimpl implements UserDAO {
 		return status;
 		
 	}
+	
+	
+	@Override
+	public boolean adds(User user) {
+		// TODO Auto-generated method stub
+		Session session = entityManager.unwrap(Session.class);
+		boolean status = false;
+		boolean contains = session.contains(user.getEmail(), user.getPassword());
+		
+		if(contains==true) {
+			status = true;
+		}
+		
+		return status;
+		
+	}
+	
 
 	@Override
 	public List<User> get() {
@@ -66,11 +90,24 @@ public class UserDAOimpl implements UserDAO {
 
 
 	@Override
-	public User getById(int id) {
+	public User getById(long id) {
 	Session uId = entityManager.unwrap(Session.class);
 	User load = uId.load(User.class, id);
 		return load;
 	}
+	
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		Session unwrap = entityManager.unwrap(Session.class);
+		User load = unwrap.byId(User.class).load(id);
+		unwrap.delete(load);
+		System.out.println("Selection deleted");
+
+		
+	}
+
+	
 	
 	
 

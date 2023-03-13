@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.di.productModel.Products;
 import com.di.productService.ProductService;
 
-@RequestMapping("/products")
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/v1/products")
 @RestController
+
+
 public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
-	
 	@GetMapping("/prod")
 	public String product() {
 		return "Prdoucts working";
@@ -61,19 +64,16 @@ public class ProductController {
 		
 		
 	}
-	
 	@GetMapping("/list")
 	public ResponseEntity<List<Products>>getAllProducts(){
 	List <Products> prds =	productService.get();
 		return new ResponseEntity<List<Products>>(prds,HttpStatus.OK);
 	}
-	
 	@PutMapping("/update")
 	public void update(@RequestBody Products products) {
 		System.out.println("Products are updating");
 		productService.update(products);
 	}
-	
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable("id") int id) {
 		productService.delete(id);
@@ -83,7 +83,6 @@ public class ProductController {
 	
 //	==========================================
 	//DISPLAYING PRODUCTS BY ID
-	
 	@GetMapping("/byId")
 	public ResponseEntity<Products>productById(@RequestBody Products products){
 		Products rst  = productService.getById(products.getId());

@@ -14,6 +14,8 @@
 	<description>An Ecommerce Web Application Backend Code</description>
 	<properties>
 		<java.version>17</java.version>
+		<spring-security.version>6.0.1</spring-security.version>
+
 	</properties>
 	<dependencies>
 
@@ -57,6 +59,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		
+		
+		
+		
+		
+		<!-- RAZORPAY DEPENDENCY -->
+		<dependency>
+			<groupId>com.razorpay</groupId>
+			<artifactId>razorpay-java</artifactId>
+			<version>1.4.3</version>
 		</dependency>
 
 

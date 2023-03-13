@@ -24,7 +24,6 @@ function Home() {
             }
         )
     }
-
     const addProducts = (item)=>{
         console.log("items00",item);
         navig("/Cartlogout",{state:item})

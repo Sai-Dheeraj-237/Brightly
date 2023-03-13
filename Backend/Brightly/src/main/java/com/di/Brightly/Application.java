@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @RestController
@@ -16,6 +18,15 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+	}
+	
+	public WebMvcConfigurer configure() {
+		return  new WebMvcConfigurer() {
+			@SuppressWarnings("unused")
+			public void addCorrsMapping(CorsRegistry reg) {
+				reg.addMapping("/**").allowedOrigins("*");
+			}
+		};
 	}
 
 }

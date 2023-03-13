@@ -18,6 +18,8 @@ function Dashboard(props) {
     const [products, setProducts] = useState([]);
     const navig = useNavigate();
     const [x,setX]=useState();
+    const [search, setSearch] = useState("");
+
 
 
     useEffect(() => {
@@ -25,15 +27,16 @@ function Dashboard(props) {
     }, [])
 
     const userdisplayProducts = () => {
-        axios.get("http://localhost:8089/api/v1.0.0/product/list").then(
+        axios.get("http://localhost:8112/api/v1/products/list").then(
             response => {
                 if (response.status) {
-                    console.log("response", response.data);
-                    setProducts(response.data.products);
+                    console.log("response", response);
+                    setProducts(response.products);
                 }
             }
         )
     }
+    // http://localhost:8089/api/v1.0.0/product/list
 
     const addProducts = (item) => {
         console.log("items00", item);
@@ -57,7 +60,10 @@ function Dashboard(props) {
         navig("/Cart")
     }
 
-  
+    const updateSt = (event)=>{
+        var value =   event.target.value;
+        setSearch(value);
+    }
 
     const generateUserProductCards = () => {
         console.log("products to be displayed", products);
@@ -85,9 +91,9 @@ function Dashboard(props) {
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i>
-                        </div> */}
+                        </div> */}  <br></br>
                         <h5 onClick={() => addProducts(item)} style={{ cursor: "pointer" }}>{item.name}</h5>
-                        <h6>₹{item.price}</h6>
+                        <h4>₹{item.price}</h4>
 
                         {/* -----BUTTONS---------- */}
                         
@@ -116,6 +122,13 @@ function Dashboard(props) {
                 <div class="container mb-4">
                     <div class="row">
 
+                        <div className="input-group" style={{ marginLeft:"300px"}}>
+                                        <form>
+                                            <input type="search" style={{width:"450px", marginTop:"15px"}}class="form-control" placeholder="Search for Products"  onChange={updateSt} />
+
+                                        </form>
+                                       
+                                    </div>
                         {generateUserProductCards()}
 
                     </div>
